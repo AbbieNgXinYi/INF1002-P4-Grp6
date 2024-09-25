@@ -15,6 +15,7 @@ This project is a Python-based application that enables users to create simple v
 
 ## Getting Started
 **[Back To Top](#back-to-top)**
+
 - Creating your folders
 - Libraries installation
 - Step by step execution guide
