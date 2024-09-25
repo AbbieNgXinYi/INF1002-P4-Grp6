@@ -13,12 +13,12 @@ presets = {
     'hd': {
         'resolution': (1920, 1080),
         'fps': 0.07,
-        'music_file': r'C:\Users\ANG HUI TING\OneDrive\Desktop\Hui Ting\SIT\Year 1 Tri 1\Programming Fundamentals (INF1002)\Project\Kevin MacLeod  Sneaky Snitch (1).mp3'
+        'music_file': input("paste music path")
     },
     'sd': {
         'resolution': (1280, 720),
         'fps': 0.1,
-        'music_file': r'C:\Users\ANG HUI TING\OneDrive\Desktop\Hui Ting\SIT\Year 1 Tri 1\Programming Fundamentals (INF1002)\Project\original sound - linahartana8_1726123548_musicaldown.com (1).mp3'
+        'music_file': input("paste music path")
     }
     # Add more presets as needed
 }
