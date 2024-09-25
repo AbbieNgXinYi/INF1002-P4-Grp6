@@ -1,1 +1,98 @@
+import os
+from moviepy.editor import ImageSequenceClip, AudioFileClip
+from PIL import Image
+import tkinter as tk
+from tkinter import filedialog, messagebox
+
+
+
+
+
+# Define presets
+presets = {
+    'hd': {
+        'resolution': (1920, 1080),
+        'fps': 0.07,
+        'music_file': r'C:\Users\ANG HUI TING\OneDrive\Desktop\Hui Ting\SIT\Year 1 Tri 1\Programming Fundamentals (INF1002)\Project\Kevin MacLeod  Sneaky Snitch (1).mp3'
+    },
+    'sd': {
+        'resolution': (1280, 720),
+        'fps': 0.1,
+        'music_file': r'C:\Users\ANG HUI TING\OneDrive\Desktop\Hui Ting\SIT\Year 1 Tri 1\Programming Fundamentals (INF1002)\Project\original sound - linahartana8_1726123548_musicaldown.com (1).mp3'
+    }
+    # Add more presets as needed
+}
+
+#image_folder = input("paste image folder path")
+#music_file = input("paste music folder path")
+
+
+
+# Function to load images from a folder
+def load_images_from_folder(folder):
+    images = []
+    for filename in sorted(os.listdir(folder)):  # Sorting ensures the right order
+        if filename.endswith(('png', 'jpg', 'jpeg')):
+            images.append(os.path.join(folder, filename))
+    return images
+
+# Function to resize images to a target resolution
+def resize_images(images, target_resolution):
+    resized_image_paths = []
+    
+    for image_path in images:
+        img = Image.open(image_path)
+        
+        # Resize image to the target resolution using the LANCZOS filter
+        img = img.resize(target_resolution, Image.Resampling.LANCZOS)
+        
+        # Save resized image to a new path (or overwrite original if you prefer)
+        resized_path = image_path.replace('.jpg', '_resized.jpg').replace('.jpeg', '_resized.jpeg').replace('.png', '_resized.png')
+        img.save(resized_path)
+        resized_image_paths.append(resized_path)  # Collect the resized images' paths
+    
+    return resized_image_paths
+
+
+# Function to process video based on selected preset
+def process_video(preset_name):
+    if preset_name not in presets:
+        messagebox.showerror("Error", "Preset not found!")
+        return
+
+    preset = presets[preset_name]
+    image_folder = filedialog.askdirectory(title="Select Image Folder")
+    if not image_folder:
+        return
+    
+    target_resolution = preset['resolution']
+    fps = preset['fps']
+    music_file = preset['music_file']
+    
+    images = load_images_from_folder(image_folder)
+    resized_images = resize_images(images, target_resolution)
+    
+    background_music = AudioFileClip(music_file)
+    
+    clip = ImageSequenceClip(resized_images, fps=fps)
+    final_video = clip.set_audio(background_music)
+    
+    output_video_path = filedialog.asksaveasfilename(defaultextension=".mp4", filetypes=[("MP4 files", "*.mp4")], title="Save Video As")
+    if not output_video_path:
+        return
+    
+    final_video.write_videofile(output_video_path, codec='libx264')
+    messagebox.showinfo("Success", f"Video saved to {output_video_path}")
+
+# Create the main application window
+root = tk.Tk()
+root.title("Video Preset Application")
+
+# Add buttons for each preset
+for preset_name in presets:
+    button = tk.Button(root, text=f"Process with {preset_name.upper()}", command=lambda name=preset_name: process_video(name))
+    button.pack(pady=10)
+
+# Start the GUI event loop
+root.mainloop()
 
