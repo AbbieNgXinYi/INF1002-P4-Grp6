@@ -1,5 +1,5 @@
 # INF1002-P4-Grp6
-## Project Title : Creating a simple video slideshow withh music
+## Project Title : Creating a simple video slideshow with music
 
 ## Table of Contents
 - **[Project Overview](#project-overview)**
