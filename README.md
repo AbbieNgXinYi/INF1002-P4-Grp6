@@ -79,7 +79,7 @@ Description: While not a Python library, ffmpeg is essential for handling audio 
 
 Installation (Varies for different Operating Systems):
 
-Windows:
+**Windows:**
 Step 1: Download the FFmpeg Zip Package
 - Go to the FFmpeg official website.
 - Scroll down to the Get packages & executable files section.
@@ -105,7 +105,7 @@ Step 4: Verify the Installation
 - Type ffmpeg -version and press Enter.
 - If FFmpeg is installed correctly, you'll see details about the FFmpeg version.
 
-MacOC:
+**MacOC:**
 Step 1: Install Homebrew (if not installed)
 - Open the Terminal app.
 - - Install Homebrew by pasting this command and pressing Enter:
