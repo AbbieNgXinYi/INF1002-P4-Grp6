@@ -81,51 +81,51 @@ Installation (Varies for different Operating Systems):
 
 Windows:
 Step 1: Download the FFmpeg Zip Package
-*Go to the FFmpeg official website.
-*Scroll down to the Get packages & executable files section.
-*Under the Windows tab, click on the link to Windows builds from gyan.dev.
-*Download the ffmpeg-release-essentials.zip file from the "Essentials Builds" section.
+- Go to the FFmpeg official website.
+- Scroll down to the Get packages & executable files section.
+- Under the Windows tab, click on the link to Windows builds from gyan.dev.
+- Download the ffmpeg-release-essentials.zip file from the "Essentials Builds" section.
 
 Step 2: Extract the FFmpeg Files
-*Navigate to the folder where the .zip file was downloaded.
-*Right-click on the file and select Extract All or use a tool like 7-Zip.
-*Choose a location to extract the files. For simplicity, extract it to C:\ffmpeg.
+- Navigate to the folder where the .zip file was downloaded.
+- Right-click on the file and select Extract All or use a tool like 7-Zip.
+- Choose a location to extract the files. For simplicity, extract it to C:\ffmpeg.
 
 Step 3: Add FFmpeg to the System PATH
 This step allows you to use FFmpeg from any folder in the command prompt.
-*Open the Start Menu and search for Environment Variables.
-*Click on Edit the system environment variables.
-*In the System Properties window, click on the Environment Variables button.
-*Under the System variables section, find the variable named Path and click Edit.
-*Click New and add the path to the bin folder where FFmpeg is extracted (e.g., C:\ffmpeg\bin).
-*Click OK to close all windows.
+- Open the Start Menu and search for Environment Variables.
+- Click on Edit the system environment variables.
+- In the System Properties window, click on the Environment Variables button.
+- Under the System variables section, find the variable named Path and click Edit.
+- Click New and add the path to the bin folder where FFmpeg is extracted (e.g., C:\ffmpeg\bin).
+- Click OK to close all windows.
 
 Step 4: Verify the Installation
-*Open the Command Prompt by typing cmd in the Start Menu and pressing Enter.
-*Type ffmpeg -version and press Enter.
-*If FFmpeg is installed correctly, you'll see details about the FFmpeg version.
+- Open the Command Prompt by typing cmd in the Start Menu and pressing Enter.
+- Type ffmpeg -version and press Enter.
+- If FFmpeg is installed correctly, you'll see details about the FFmpeg version.
 
 MacOC:
 Step 1: Install Homebrew (if not installed)
-*Open the Terminal app.
-*Install Homebrew by pasting this command and pressing Enter:
+- Open the Terminal app.
+- - Install Homebrew by pasting this command and pressing Enter:
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-*Follow the on-screen instructions to complete the installation.
+- Follow the on-screen instructions to complete the installation.
 
 Step 2: Install FFmpeg with Homebrew
-*Once Homebrew is installed, install FFmpeg by running this command in the terminal:
+- Once Homebrew is installed, install FFmpeg by running this command in the terminal:
 ```bash
 brew install ffmpeg
 ```
 
 Step 3: Verify the Installation
-*After the installation completes, check if FFmpeg is installed correctly by running:
+**After the installation completes, check if FFmpeg is installed correctly by running:**
 ```bash
 ffmpeg -version
 ```
-*You should see information about the FFmpeg version, build, and configuration if the installation is successful.
+- You should see information about the FFmpeg version, build, and configuration if the installation is successful.
 
 #### Verifying Installations
 After installing, you can verify that all libraries are correctly installed by running the following Python script:
