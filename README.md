@@ -261,6 +261,8 @@ The modules in order are:
 - The module for previewing images on the timeline
 - The module that displays the images in the timeline
 
+#----------------------------------------------------------------------------------------
+
 2. Uploading mp3 module
 ```
 upload_mp3(self)
