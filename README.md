@@ -27,11 +27,11 @@ This project is a Python-based application that enables users to create simple v
 ### Libraries Installation
 **[Back To Top](#back-to-top)**
 #### 1. Moviepy
-Description: A powerful imaging library in Python, used for opening, manipulating, and saving many different image file formats. It's the modern fork of the original PIL (Python Imaging Library).
+Description:  Python library used for video editing and manipulation. It allows you to create, modify, and process videos, audio files, and images programmatically. 
 
 Installation: In the terminal, type: 
 ```bash
-pip install pillow
+pip install moviepy
 ```
 
 #### 2. Pillow
