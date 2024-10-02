@@ -142,6 +142,25 @@ If no errors are raised, your environment is set up correctly to run the Simple 
 
 ### Executing basic program
 **[Back To Top](#back-to-top)**
+1. Firstly, import the libraries to be used. In our case, we will be using the os, moviepy and PIL libraries.
+```import os
+from moviepy.editor import ImageSequenceClip, AudioFileClip
+from PIL import Image
+```
+
+2. Now moving on to retrieving images from a specified folder and filtering them by file types.
+```def load_images_from_folder(folder):
+    images = []
+    for filename in sorted(os.listdir(folder)):  # Sorting ensures the right order
+        if filename.endswith(('png', 'jpg', 'jpeg')):
+            images.append(os.path.join(folder, filename))
+    return images
+```
+- sorted(os.listdir(folder)):
+  This ensures the images are processed in alphabetical order, which is important for keeping the correct sequence.
+  
+- filename.endswith(('png', 'jpg', 'jpeg')):
+  It filters the files to include only image formats (png, jpg, jpeg).
 
 
 ### Create UI Features 
