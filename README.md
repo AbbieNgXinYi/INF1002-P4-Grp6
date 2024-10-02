@@ -235,6 +235,56 @@ final_video.write_videofile(output_video_path, codec='libx264')
 ### Choosing your own images and music
 **[Back To Top](#back-to-top)**
 
+1. Uploading images module
+```
+upload_image(self)
+```
+   
+- Firstly the module will define the file path of the pictures.
+```
+file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg;*.jpeg;*.png")])
+```
+
+- The user will be shown which path was chosen (to see if uploaded wrong one)
+```
+print(f"Image uploaded: {file_path}")
+```
+
+- The file path is then referenced by the other modules so they can work with the images.
+```
+self.file_listbox.insert(tk.END, f"Image: {os.path.basename(file_path)}")
+self.preview_image(file_path)
+self.add_image_to_timeline(file_path)
+```
+The modules in order are:
+- The listbox module for displaying the images and music
+- The module for previewing images on the timeline
+- The module that displays the images in the timeline
+
+2. Uploading mp3 module
+```
+upload_mp3(self)
+```
+- Firstly the module will define the file path of the pictures.
+```
+file_path = filedialog.askopenfilename(filetypes=[("MP3 files", "*.mp3")])
+```
+
+- The user will be shown which path was chosen (to see if uploaded wrong one)
+```
+print(f"MP3 uploaded: {file_path}")
+```
+- The file path is then referenced by the other modules so they can work with the mp3.
+```
+self.file_listbox.insert(tk.END, f"MP3: {os.path.basename(file_path)}")
+self.preview_mp3(file_path)
+```
+The modules in order are:
+- The listbox module for displaying the images and music
+- The module for previewing music on the timeline
+
+
+
 ### Create UI Features 
 **[Back To Top](#back-to-top)**
 
