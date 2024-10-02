@@ -162,6 +162,74 @@ from PIL import Image
 - filename.endswith(('png', 'jpg', 'jpeg')):
   It filters the files to include only image formats (png, jpg, jpeg).
 
+  3.Next, we resize the images to a defined target resolution (e.g., 1920x1080) to ensure consistent video quality and maintain a uniform aspect ratio across all frames.
+```def resize_images(images, target_resolution):
+    resized_image_paths = []
+    
+    for image_path in images:
+        img = Image.open(image_path)
+        
+        # Resize image to the target resolution using the LANCZOS filter
+        img = img.resize(target_resolution, Image.Resampling.LANCZOS)
+        
+        # Save resized image to a new path (or overwrite original if you prefer)
+        resized_path = image_path.replace('.jpg', '_resized.jpg').replace('.jpeg', '_resized.jpeg').replace('.png', '_resized.png')
+        img.save(resized_path)
+        resized_image_paths.append(resized_path)  # Collect the resized images' paths
+    
+    return resized_image_paths
+```
+- Image Resizing: 
+  For each image, it opens the image file using PIL.Image.open(), resizes it to the target resolution using the LANCZOS filter (which provides high-quality resizing), and saves it with a new filename.
+
+- Image.Resampling.LANCZOS:
+  A filter used for downscaling or resizing images with good quality.
+
+- The resized image's path is saved with _resized added to the original filename.
+
+4. Next, create a variable for your image folder and define the path to the folder containing images. 
+```image_folder = r'C:\path\to\images\folder'
+   images = load_images_from_folder(image_folder)
+```
+- The load_images_from_folder() function is used to retrieve a list of images.
+
+5. Defining the target resolution
+```
+target_resolution = (1920, 1080)  # Set a fixed resolution for the video (HD)
+```
+
+6. Resizing all images
+```
+resized_images = resize_images(images, target_resolution)
+```
+- The list of original image paths is passed to the resize_images() function to resize them to the target resolution.
+- The function returns a list of resized image paths, which will be used to create the video.
+
+7. Next, create a variable for your music folder and define the path to the folder containing the audio files. 
+```
+music_file = r'C:\path\to\audio\file.mp3'
+background_music = AudioFileClip(music_file)
+```
+8. Creating the slideshow video clip
+```
+clip = ImageSequenceClip(resized_images, fps=0.07)  # 1 frame per second (adjust fps for duration)
+```
+- The ImageSequenceClip() function from MoviePy creates a video clip from the resized images.
+- set the frames per second (FPS) to control how long each image stays on screen. You can adjust the FPS to control the image display duration.
+
+9. Create a variable to load both images and audio file into video clip
+```
+final_video = clip.set_audio(background_music)
+```
+- set_audio() is used to add the loaded background music to the video clip.
+
+10. Defining the path to export your video
+```
+output_video_path = r'C:\path\to\output\output_video.mp4'
+final_video.write_videofile(output_video_path, codec='libx264')
+```
+- The video is exported to an MP4 file using write_videofile().
+- Remeber to specify the codec to use for video compression. In this code, we are using 'libx264' as it is widely used for high-quality MP4 videos.
 
 ### Create UI Features 
 **[Back To Top](#back-to-top)**
