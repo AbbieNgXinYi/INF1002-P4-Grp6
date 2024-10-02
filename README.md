@@ -7,6 +7,7 @@
   - **[Folder and Images and Music file creation](#folder-and-images-and-music-file-creation)**
   - **[Libraries Installation](#libraries-installation)**
   - **[Executing basic program](#executing-basic-program)**
+  - **[Choosing your own images and music](#choosing-your-own-images-and-music)**
   - **[Create UI Features](#create-ui-features)**
   - **[Implementing UI features to basic program](#implementing-ui-features-to-basic-program)**
 ---
@@ -230,6 +231,9 @@ final_video.write_videofile(output_video_path, codec='libx264')
 ```
 - The video is exported to an MP4 file using write_videofile().
 - Remeber to specify the codec to use for video compression. In this code, we are using 'libx264' as it is widely used for high-quality MP4 videos.
+
+### Choosing your own images and music
+**[Back To Top](#back-to-top)**
 
 ### Create UI Features 
 **[Back To Top](#back-to-top)**
