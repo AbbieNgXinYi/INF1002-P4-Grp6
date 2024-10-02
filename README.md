@@ -237,55 +237,37 @@ final_video.write_videofile(output_video_path, codec='libx264')
 
 1. Uploading images module
 ```
-upload_image(self)
-```
-   
-- Firstly the module will define the file path of the pictures.
-```
-file_path = filedialog.askopenfilename(filetypes=[("Image files", "*.jpg;*.jpeg;*.png")])
+    image_folder = filedialog.askdirectory(title="Select Image Folder")
+    if not image_folder:
+        return
 ```
 
-- The user will be shown which path was chosen (to see if uploaded wrong one)
+- This defines the file directory of the user which has the images. The user is prompted to enter the directory.
+- There is also a return function if the user enters not a folder.
+
 ```
-print(f"Image uploaded: {file_path}")
+    images = load_images_from_folder(image_folder)
+    resized_images = resize_images(images, target_resolution)
 ```
 
-- The file path is then referenced by the other modules so they can work with the images.
-```
-self.file_listbox.insert(tk.END, f"Image: {os.path.basename(file_path)}")
-self.preview_image(file_path)
-self.add_image_to_timeline(file_path)
-```
-The modules in order are:
-- The listbox module for displaying the images and music
-- The module for previewing images on the timeline
-- The module that displays the images in the timeline
+- After the user has defined the file path, the images are resized.
 
 ### ------------------------------------------------------------------------------------------------------------------------
 
 2. Uploading mp3 module
 ```
-upload_mp3(self)
-```
-- Firstly the module will define the file path of the pictures.
-```
-file_path = filedialog.askopenfilename(filetypes=[("MP3 files", "*.mp3")])
+    music_file = filedialog.askopenfilename(title="Select Music File", filetypes=[("Audio Files", "*.mp3;*.wav;*.ogg")])
+    if not music_file:
+        return
 ```
 
-- The user will be shown which path was chosen (to see if uploaded wrong one)
-```
-print(f"MP3 uploaded: {file_path}")
-```
-- The file path is then referenced by the other modules so they can work with the mp3.
-```
-self.file_listbox.insert(tk.END, f"MP3: {os.path.basename(file_path)}")
-self.preview_mp3(file_path)
-```
-The modules in order are:
-- The listbox module for displaying the images and music
-- The module for previewing music on the timeline
+- This defines the file directory of the user which has the mp3. The user is prompted to enter the directory.
+- There is also a return function if the user enters not a folder.
 
-
+```
+    background_music = AudioFileClip(music_file)
+```
+- The user's mp3 is now set as the music for the video 
 
 ### Create UI Features 
 **[Back To Top](#back-to-top)**
