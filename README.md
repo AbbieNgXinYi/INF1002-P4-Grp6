@@ -23,7 +23,8 @@ This project is a Python-based application that enables users to create simple v
 
 ### Folder and Images and Music file creation
 **[Back To Top](#back-to-top)**
-
+Before coding, you must store the images and music you wish to upload into the same folder as the Python code.
+Additionally, you will have to create a folder to store a set of images for **Choosing your own images and music**
 
 ### Libraries Installation
 **[Back To Top](#back-to-top)**
