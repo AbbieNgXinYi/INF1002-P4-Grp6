@@ -10,6 +10,7 @@
   - **[Choosing your own images and music](#choosing-your-own-images-and-music)**
   - **[Create UI Features](#create-ui-features)**
   - **[Implementing UI features to basic program](#implementing-ui-features-to-basic-program)**
+  - **[Synchronisation of video and images to beat](#synchronisation-of-video-and-images-to-beat)**
 ---
 ## Project Overview
 This project is a Python-based application that enables users to create simple video slideshows by combining images and music. The goal of the project is to offer an intuitive and user-friendly interface that mimics key features found in video editing platforms, allowing users to easily organize images and background music into a cohesive video slideshow.
@@ -271,14 +272,113 @@ final_video.write_videofile(output_video_path, codec='libx264')
 - The user's mp3 is now set as the music for the video 
 
 ### Create UI Features 
+In this section, we describe the user interface (UI) components developed for the Simple Video Editor application. The UI features aim to enhance user interaction and streamline the video editing process. Key components include:
+
+File Manager Sidebar:
+
+Allows users to upload images and MP3 files.
+- Displays lists of uploaded images and audio files for easy management.
+
+Preview Area:
+- Displays a preview of the selected image, providing immediate visual feedback.
+- Updates automatically when a new image is selected or uploaded.
+  
+Timeline Visualization:
+
+- Provides a timeline at the bottom of the application showing the sequence of images added for video generation.
+- Each image in the timeline is represented visually for quick reference.
+  
+Audio Waveform Display:
+
+- Visual representation of the audio file's waveform, enhancing user understanding of the audio content.
+- Allows users to trim the audio by setting start and end times, with the waveform updating dynamically.
+  
+Control Buttons:
+
+- Upload Image/MP3: Buttons for uploading media files.
+- Delete: Removes selected images or audio files from the lists.
+- Clear: Resets all inputs and clears uploaded files.
+- Trim Audio: Facilitates trimming of audio segments based on user input.
+- Generate MP4: Compiles the uploaded images and audio into a final video output.
+
 **[Back To Top](#back-to-top)**
 
 
 ### Implementing UI features to basic program
+This section outlines how the UI features were integrated into the underlying functionality of the Simple Video Editor application.
+
+1. File Upload Functionality:
+
+- Implemented upload_image and upload_mp3 methods to handle file selection via dialogs.
+- Used Tkinter's Listbox widget to display and manage uploaded files, ensuring users can easily select and delete items.
+2. Image Preview:
+
+- Leveraged the PIL library to load and display images in a preview area.
+- Implemented thumbnail resizing for optimal display within the UI.
+3. Audio Waveform Visualization:
+
+- Integrated librosa for audio analysis, allowing for real-time waveform generation based on the uploaded MP3.
+- Utilized Matplotlib to plot the waveform and display it within the application.
+4. Timeline Management:
+
+- Developed a timeline feature that visually represents the sequence of images added to the project.
+- Images are added as small thumbnails to a Canvas widget for easy viewing and rearrangement.
+5. Audio Trimming:
+
+- Implemented functionality to allow users to input start and end times for audio trimming.
+- Used the pydub library for audio manipulation, enabling users to save trimmed audio segments.
+6. Video Generation:
+
+- Utilized the moviepy library to compile images and audio into a single MP4 file.
+- Managed synchronization between image duration and audio beats to ensure a cohesive video output.
+
+This documentation provides an overview of the UI components and their integration with the core functionality of the Simple Video Editor application. Users can easily navigate the application and leverage its features for efficient video editing.
+
 **[Back To Top](#back-to-top)**
 
 
 ### Synchronisation of video and images to beat
+This project enables the synchronization of images with audio beats, creating engaging video presentations. The application, built using Tkinter, allows users to upload images and MP3 audio files, trim audio segments, and generate an MP4 video that aligns the visual content with the rhythm of the music.
+
+#### Features
+
+- **User-Friendly Interface**: Designed with a clean and intuitive layout using Tkinter, making it easy to upload and manage images and audio files.
+- **Image and Audio Upload**: Users can upload multiple images and an MP3 file through buttons or drag-and-drop functionality.
+- **Audio Trimming**: Users can trim the audio to select specific segments for synchronization.
+- **Real-Time Waveform Visualization**: The application displays the audio waveform for better visual reference while editing.
+- **Beat Detection**: Utilizing of `librosa` helps to detect beats in the audio track, ensuring that the images displayed are in sync with the music.
+- **MP4 Video Generation**: Combines the uploaded images and audio into a final MP4 video that matches the beats.
+
+#### Code Overview
+
+The core functionality is implemented in the `FileEditorApp` class, which includes methods for:
+
+- **Uploading Files**: Methods like `upload_image()` and `upload_mp3()` allow users to load their media files into the application.
+- **Previewing Media**: Users can preview images and audio waveforms to make informed editing decisions.
+- **Trimming Audio**: The `trim_audio()` method allows for specifying start and end times, facilitating precise control over the audio segment used.
+- **Beat Tracking**: The `generate_mp4()` method detects beats in the audio file and calculates the duration for which each image should be displayed based on these beats.
+- **Generating the Final Video**: After synchronization, the application generates and saves the output video as an MP4 file.
+
+#### Requirements
+
+- Python 3.x
+- Required Libraries:
+  - `moviepy`
+  - `pydub`
+  - `librosa`
+  - `matplotlib`
+  - `Pillow`
+  - `tkinterdnd2`
+  
+#### To run the application
+1. Run the application:
+``
+python your_script.py  # Replace with your actual script name
+``
+2. Upload images and an MP3 file.
+3. Use the trimming feature to specify which part of the audio you want to include.
+4. Click "Generate MP4" to create the synchronized video.
+
 **[Back To Top](#back-to-top)**
 
 
