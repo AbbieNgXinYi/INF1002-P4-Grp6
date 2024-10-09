@@ -11,6 +11,9 @@ Report draft
 
 4. Related works / Literature
 
+This is a example of PyAv module used to sync the audio to the images.
+Although a different method was used in the final project, this was a similair idea considered.
+https://stackoverflow.com/questions/73198826/trying-to-get-audio-raw-data-and-print-it-using-pyav
 
 5. Methods
 
